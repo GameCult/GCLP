@@ -1,0 +1,9 @@
+mix phx.new lp --live
+cd lp
+
+# on local machine, for dev
+# needs postgres, default credentials are postgres/postgres
+# see: lp/config/dev.exs
+mix ecto create
+mix deps get
+mix deps compile
