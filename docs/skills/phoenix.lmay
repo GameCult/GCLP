@@ -1,0 +1,10 @@
+version: 1.5.5
+
+facts:
+     - you need controller, in order to serve route
+     - you also need view
+     - if you want html - must rename it to html.eex and add controller+view
+     - minimal /lib/templates/layout/root is "<%= @inner_content %>"
+     - you get one generated for you, when running "mix phx.gen.live "
+     - live uses websockets
+     

@@ -10,6 +10,8 @@ use Mix.Config
 config :lp,
   ecto_repos: [Lp.Repo]
 
+
+
 # Configures the endpoint
 config :lp, LpWeb.Endpoint,
   url: [host: "localhost"],
@@ -25,6 +27,13 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+
+config :phoenix, :template_engines,
+  md: PhoenixMarkdown.Engine,
+  haml: PhoenixHaml.Engine
+  # see also: https://github.com/chrismccord/phoenix_haml
+
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

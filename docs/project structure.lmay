@@ -1,0 +1,17 @@
+# lmay = yaml. 
+# in vs code, Open Settings (JSON):
+# 
+# "files.associations":
+#      {
+#    "*.lmay":"yaml"
+#   },
+# or feel free to rename it ^_^
+folders:
+    lib:
+        description: all sources
+
+files:
+    lib/lp_web/:
+        router.ex:
+            notes:
+   

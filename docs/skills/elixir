@@ -1,0 +1,2 @@
+mix.exs -> put deps here
+func (a)+b -> func((a)+b) ;brackets are added implicitly
