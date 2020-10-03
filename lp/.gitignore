@@ -31,7 +31,7 @@ npm-debug.log
 # Since we are building assets from assets/,
 # we ignore priv/static. You may want to comment
 # this depending on your deployment strategy.
-/priv/static/
+# /priv/static/
 
 # find the way to get your prod secret to prod server
 # leaving you an example
