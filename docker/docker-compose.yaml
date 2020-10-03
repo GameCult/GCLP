@@ -6,3 +6,5 @@ services:
             context: ./elixir_dev
         ports:
             - 4000:4000
+        volumes: 
+            - "./volumes/elixir:/elixir"            

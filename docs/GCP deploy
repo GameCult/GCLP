@@ -1,0 +1,28 @@
+# commands from dev env should work. 
+# you'd need to add prod database to env, like this (don't use this exact one)
+# export DATABASE_URL=ecto://postgres:postgres@localhost/gclp_dev 
+# and gen a secret:
+export SECRET_KEY_BASE=`mix phx.gen.secret`
+# open ports you want to use for prod in firewall rules(instance settings)
+# then add port you want to env:
+# export PORT=80085 #this one won't work, obviously. put proper one here
+# as I'm using micro instance with ssd, let's add swap :c
+# use blkid to get uuid
+# add the folloving line:
+# UUID=XXXX-XXXX-XXXX-XXXX-XXXX     /gssd ext4 errors=remount-ro 0 1
+# to /etc/fstab
+#sudo sed -e '2iUUID=XXXX-XXXX-XXXX-XXXX-XXXX     \/gssd ext4 errors=remount-ro 0 1' -i /etc/fstab
+#sudo sed -e '2iUUID=ba0f9619-0a64-4e35-9de0-0cd63af25c0c     \/gssd ext4 errors=remount-ro 0 1' -i /etc/fstab
+sudo mkfs.ext4 /dev/sdb
+sudo mount -t ext4 /dev/sdb /gssd
+sudo fallocate -l 4G /gssd/swapfile
+sudo chmod 600 /gssd/swapfile
+sudo mkswap /gssd/swapfile
+sudo sed -e '2i\/gssd\/swapfile swap swap defaults 0 0' -i /etc/fstab
+git clone https://github.com/GameCult/GCLP.git
+cd GCLP
+# git checkout pet # for now
+cd lp
+mix deps.get
+mix deps.compile
+mix ecto.create
