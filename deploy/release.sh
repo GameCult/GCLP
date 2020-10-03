@@ -1,3 +1,5 @@
+#!/bin/bash
+cd ../lp
 git pull origin pet
 mix deps.get --only prod
 # mix phx.digest # once you have something js related
