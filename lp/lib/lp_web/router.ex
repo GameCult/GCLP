@@ -16,6 +16,7 @@ defmodule LpWeb.Router do
 
   scope "/", LpWeb do
     pipe_through :browser
+    get "old", OldController, :index
 
     live "/", PageLive, :index
   end
