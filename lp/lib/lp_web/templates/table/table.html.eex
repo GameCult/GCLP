@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css" rel="stylesheet" media="screen">
+<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js
+"></script>
+<script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#taskData').DataTable( {
+        responsive: {
+            details: {
+                type: 'column',
+                target: 'tr'
+            }
+        },
+        columnDefs: [ {
+            className: 'control',
+            orderable: false,
+            targets:   0
+        } ],
+        order: [ 1, 'asc' ]
+    } );
+} );
+</script>
+</head>
+<body>
+
+<table id="taskData" class="display nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Project</th>
+                <th>Name</th>
+                <th>Category (Modeling/Music/AI/Refactoring/etc.)</th>
+                <th>Status (available/assigned/pending review/complete)</th>
+                <th>Currently assigned members/Current volunteers</th>
+                <th>Man Hours</th>
+                <th>Skill level</th>
+                <th>Contribution Points</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th>Project</th>
+                <th>Name</th>
+                <th>Category (Modeling/Music/AI/Refactoring/etc.)</th>
+                <th>Status (available/assigned/pending review/complete)</th>
+                <th>Currently assigned members/Current volunteers</th>
+                <th>Man Hours</th>
+                <th>Skill level</th>
+                <th>Contribution Points</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>GCLP</td>
+                <td>Table data</td>
+                <td>web</td>
+                <td>assigned</td>
+                <td>1: Yang</td>
+                <td>est: 7, spnt: 2</td>
+                <td>medium</td>
+                <td>31</td>
+            </tr>
+                    </tbody>
+    </table>
+</body>
+</html>

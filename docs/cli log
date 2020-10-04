@@ -7,3 +7,5 @@ cd lp
 mix ecto create
 mix deps get
 mix deps compile
+# self-signed ssl cert, localhost for dev
+mix phx.gen.cert 
