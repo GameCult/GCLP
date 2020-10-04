@@ -31,7 +31,8 @@ config :phoenix, :json_library, Jason
 
 config :phoenix, :template_engines,
   md: PhoenixMarkdown.Engine,
-  haml: PhoenixHaml.Engine
+  # haml: PhoenixHaml.Engine
+  # https://emmet.io eex should be good enough
   # see also: https://github.com/chrismccord/phoenix_haml
 
 

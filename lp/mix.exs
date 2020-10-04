@@ -48,7 +48,7 @@ defmodule Lp.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_markdown, "~> 1.0"},
-      {:phoenix_haml, "~> 0.2"},
+      # {:phoenix_haml, "~> 0.2"},
 
     ]
   end
