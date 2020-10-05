@@ -10,9 +10,11 @@ defmodule LpWeb.GitController do
     def show(conn, _params) do
       html(conn,"")
     end
-    def oauth(conn, _params) do
-      # render(conn, "oauth2.html")
-      redirect(conn, "git.html")
+    def oauth(conn, %{"code" => code}) do
+      render(conn, "oauth2.html", code: code)
+      # redirect(conn, "git.html")
+      html(conn,"")
+
     end
     def github(conn, _params) do
       authorize_url = Github.Oauth2.Client.authorize_url!(

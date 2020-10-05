@@ -8,7 +8,8 @@ key=`mix phx.gen.secret`
 echo 'export SECRET_KEY_BASE='$key >> ~/.bashrc
 fi
 if [ -z "$PORT"]; then 
-echo 'export PORT=443' >> ~/.bashrc
+echo 'export PORT=80' >> ~/.bashrc
+# echo 'export PORT=443' >> ~/.bashrc that was a mistake. it is http port in prod
 fi
 # and cert paths
 if [ -z "$GCLP_SSL_KEY_PATH"]; then 
