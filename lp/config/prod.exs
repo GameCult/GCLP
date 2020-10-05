@@ -12,6 +12,14 @@ use Mix.Config
 config :lp, LpWeb.Endpoint,
   # url: [host: "example.com", port: 80],
   url: [host: "35.193.215.48", port: 443],
+  https: [
+    port: 443,
+    cipher_suite: :strong,
+    keyfile: System.get_env("GCLP_SSL_KEY_PATH"),
+    certfile: System.get_env("GCLP_APP_SSL_CERT_PATH"),
+    transport_options: [socket_opts: [:inet6]]
+      ]
+#
 #usually you would not want to do that, but i'm lazy. adjust to your machine
   cache_static_manifest: "priv/static/cache_manifest.json"
 
@@ -47,8 +55,8 @@ config :logger, level: :info
 # We also recommend setting `force_ssl` in your endpoint, ensuring
 # no data is ever sent via http, always redirecting to https:
 #
-#     config :lp, LpWeb.Endpoint,
-#       force_ssl: [hsts: true]
+    config :lp, LpWeb.Endpoint,
+      force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
 
