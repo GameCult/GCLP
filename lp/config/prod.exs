@@ -11,7 +11,8 @@ use Mix.Config
 # before starting your production server.
 config :lp, LpWeb.Endpoint,
   # url: [host: "example.com", port: 80],
-  url: [host: "35.193.215.48", port: 443],
+  url: [host: "35.193.215.48"],
+  cache_static_manifest: "priv/static/cache_manifest.json",
   https: [
     port: 443,
     cipher_suite: :strong,
@@ -21,7 +22,6 @@ config :lp, LpWeb.Endpoint,
       ]
 #
 #usually you would not want to do that, but i'm lazy. adjust to your machine
-  cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
 config :logger, level: :info
