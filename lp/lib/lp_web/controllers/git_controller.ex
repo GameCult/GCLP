@@ -11,9 +11,11 @@ defmodule LpWeb.GitController do
       html(conn,"")
     end
     def oauth(conn, %{"code" => code}) do
+      #some persistance side effect
+      # persist(code)
       render(conn, "oauth2.html", code: code)
       # redirect(conn, "git.html")
-      html(conn,"")
+      # html(conn,"")
 
     end
     def github(conn, _params) do
