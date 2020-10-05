@@ -37,8 +37,7 @@ iex<span class="pl-k">&gt;</span> github_client <span class="pl-k">|&gt;</span> 
   <span class="pl-k">..</span>.
 <span class="pl-k">end</span></pre></div>
 <p>https://github.com/WorkflowCI/github#with-app-jwt-token (c)</p>
-<%= link "GH", to: "/github" %>
-<%= link "CredsGH", to: "/creds_show" %>
-<%# <%= Github.(@url_get_param)  %> 
+<p><%= link "GH", to: "/github" %></p>
+<%# <%= Github.(@url_get_param)  %>
 </body>
 </html>
