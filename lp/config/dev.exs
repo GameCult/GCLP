@@ -16,9 +16,9 @@ config :lp, Lp.Repo,
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :lp, LpWeb.Endpoint,
-  http: [port: 4000],
+  # http: [port: 80],
       https: [
-      port: 4001,
+      port: 443,
       cipher_suite: :strong,
       keyfile: "priv/cert/selfsigned_key.pem",
       certfile: "priv/cert/selfsigned.pem"

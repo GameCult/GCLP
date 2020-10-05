@@ -11,7 +11,7 @@ use Mix.Config
 # before starting your production server.
 config :lp, LpWeb.Endpoint,
   # url: [host: "example.com", port: 80],
-  url: [host: "35.193.215.48", port: 9999],
+  url: [host: "35.193.215.48", port: 443],
 #usually you would not want to do that, but i'm lazy. adjust to your machine
   cache_static_manifest: "priv/static/cache_manifest.json"
 
@@ -23,16 +23,16 @@ config :logger, level: :info
 # To get SSL working, you will need to add the `https` key
 # to the previous section and set your `:url` port to 443:
 #
-#     config :lp, LpWeb.Endpoint,
-#       ...
-#       url: [host: "example.com", port: 443],
-#       https: [
-#         port: 443,
-#         cipher_suite: :strong,
-#         keyfile: System.get_env("SOME_APP_SSL_KEY_PATH"),
-#         certfile: System.get_env("SOME_APP_SSL_CERT_PATH"),
-#         transport_options: [socket_opts: [:inet6]]
-#       ]
+    # config :lp, LpWeb.Endpoint,
+    #   ...
+    #   url: [host: "example.com", port: 443],
+    #   https: [
+    #     port: 443,
+    #     cipher_suite: :strong,
+    #     keyfile: System.get_env("SOME_APP_SSL_KEY_PATH"),
+    #     certfile: System.get_env("SOME_APP_SSL_CERT_PATH"),
+    #     transport_options: [socket_opts: [:inet6]]
+    #   ]
 #
 # The `cipher_suite` is set to `:strong` to support only the
 # latest and more secure SSL ciphers. This means old browsers

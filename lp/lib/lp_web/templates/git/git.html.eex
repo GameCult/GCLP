@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<h1>Github mock page</h1>
+</head>
+<body>
+<div class="highlight highlight-source-elixir"><pre>iex<span class="pl-k">&gt;</span> jwt_token <span class="pl-k">=</span> <span class="pl-en">Github</span>.<span class="pl-en">Client</span>.<span class="pl-en">generate_jwt_token</span>(<span class="pl-c1">app_id:</span> <span class="pl-c1">12345</span>, <span class="pl-c1">private_key_filepath:</span> <span class="pl-s"><span class="pl-pds">"</span>app.pem<span class="pl-pds">"</span></span>)
+
+iex<span class="pl-k">&gt;</span> github_client <span class="pl-k">=</span> %<span class="pl-en">Github</span>.<span class="pl-en">Client</span>{<span class="pl-c1">jwt_token:</span> <span class="pl-s"><span class="pl-pds">"</span>jwt_token<span class="pl-pds">"</span></span>}
+
+iex<span class="pl-k">&gt;</span> github_client <span class="pl-k">|&gt;</span> <span class="pl-en">Github</span>.<span class="pl-en">Apps</span>.<span class="pl-en">Installations</span>.<span class="pl-en">find!</span>(<span class="pl-c1">67890</span>)
+%<span class="pl-en">Github</span>.<span class="pl-en">Client</span>.<span class="pl-en">Response</span>{
+  <span class="pl-c1">status:</span> <span class="pl-c1">200</span>,
+  <span class="pl-c1">headers:</span> [<span class="pl-k">..</span>.],
+  <span class="pl-c1">body:</span> %{<span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">12345</span>, <span class="pl-k">..</span>.},
+  <span class="pl-k">..</span>.
+}</pre></div>
+
+<div class="highlight highlight-source-elixir"><pre><span class="pl-k">def</span> <span class="pl-en">github</span>(conn, <span class="pl-c">_params</span>) <span class="pl-k">do</span>
+  authorize_url <span class="pl-k">=</span> <span class="pl-en">Github</span>.<span class="pl-en">Oauth2</span>.<span class="pl-en">Client</span>.<span class="pl-en">authorize_url!</span>(
+    <span class="pl-c1">config:</span> [<span class="pl-c1">client_id:</span> <span class="pl-s"><span class="pl-pds">"</span>client_id<span class="pl-pds">"</span></span>, <span class="pl-c1">client_secret:</span> <span class="pl-s"><span class="pl-pds">"</span>client_secret<span class="pl-pds">"</span></span>],
+    <span class="pl-c1">scope:</span> <span class="pl-s"><span class="pl-pds">"</span>user:email<span class="pl-pds">"</span></span>
+  )
+  conn <span class="pl-k">|&gt;</span> <span class="pl-en">redirect</span>(<span class="pl-c1">external:</span> authorize_url)
+<span class="pl-k">end</span></pre></div>
+
+<div class="highlight highlight-source-elixir"><pre><span class="pl-k">def</span> <span class="pl-en">github_callback</span>(conn, %{<span class="pl-s"><span class="pl-pds">"</span>code<span class="pl-pds">"</span></span> <span class="pl-k">=&gt;</span> code}) <span class="pl-k">do</span>
+  access_token <span class="pl-k">=</span> <span class="pl-en">Github</span>.<span class="pl-en">Oauth2</span>.<span class="pl-en">Client</span>.<span class="pl-en">access_token!</span>(
+    <span class="pl-c1">config:</span> [<span class="pl-c1">client_id:</span> <span class="pl-s"><span class="pl-pds">"</span>client_id<span class="pl-pds">"</span></span>, <span class="pl-c1">client_secret:</span> <span class="pl-s"><span class="pl-pds">"</span>client_secret<span class="pl-pds">"</span></span>],
+    <span class="pl-c1">params:</span> [<span class="pl-c1">code:</span> code]
+  )
+
+  github_client <span class="pl-k">=</span> %<span class="pl-en">Github</span>.<span class="pl-en">Client</span>{<span class="pl-c1">access_token:</span> access_token}
+
+  %{<span class="pl-s"><span class="pl-pds">"</span>login<span class="pl-pds">"</span></span> <span class="pl-k">=&gt;</span> login} <span class="pl-k">=</span> github_client <span class="pl-k">|&gt;</span> <span class="pl-en">Github</span>.<span class="pl-en">Users</span>.<span class="pl-en">find!</span>() <span class="pl-k">|&gt;</span> <span class="pl-en">Map</span>.<span class="pl-en">fetch!</span>(<span class="pl-c1">:body</span>)
+  [%{<span class="pl-s"><span class="pl-pds">"</span>email<span class="pl-pds">"</span></span> <span class="pl-k">=&gt;</span> email} <span class="pl-k">|</span> <span class="pl-c">_</span>] <span class="pl-k">=</span> github_client <span class="pl-k">|&gt;</span> <span class="pl-en">Github</span>.<span class="pl-en">Users</span>.<span class="pl-en">Emails</span>.<span class="pl-en">list!</span>() <span class="pl-k">|&gt;</span> <span class="pl-en">Map</span>.<span class="pl-en">fetch!</span>(<span class="pl-c1">:body</span>)
+  <span class="pl-k">..</span>.
+<span class="pl-k">end</span></pre></div>
+<p>https://github.com/WorkflowCI/github#with-app-jwt-token (c)</p>
+<%= link "GH", to: "/github" %>
+<%= link "CredsGH", to: "/creds_show" %>
+<%# <%= Github.(@url_get_param)  %> 
+</body>
+</html>

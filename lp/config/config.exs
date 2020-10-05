@@ -15,6 +15,7 @@ config :lp,
 # Configures the endpoint
 config :lp, LpWeb.Endpoint,
   url: [host: "localhost"],
+  force_ssl: [hsts: true],
   secret_key_base: "DgokGSB84E7YMG0wLwe/hR51+TpWnqbdQmZjvGh6SIEDExzvOQS1IYiJoxTcI/XN",
   render_errors: [view: LpWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Lp.PubSub,
@@ -33,9 +34,16 @@ config :phoenix, :template_engines,
   md: PhoenixMarkdown.Engine
   # haml: PhoenixHaml.Engine
   # https://emmet.io eex should be good enough
-  # see also: https://github.com/chrismccord/phoenix_haml
 
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+import_config "github.exs"
+#_________________
+#import Config 
+#config :lp, 
+# client_id: "your_fancy_github_id",
+# client_secret: "that_is_a_secret"
+#
