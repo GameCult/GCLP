@@ -1,0 +1,7 @@
+{
+    "elixirLS.projectDir": "lp",
+    "files.associations":
+      {
+    "*.lmay":"yaml"
+   },
+}
