@@ -1,2 +1,3 @@
  in production, you would usually deal with static assets at application server layer, possibly not hitting Phoenix at all.
+ uses https only on port 443 in dev
  

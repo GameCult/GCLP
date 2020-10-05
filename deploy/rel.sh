@@ -8,5 +8,5 @@ key=`mix phx.gen.secret`
 echo 'export SECRET_KEY_BASE='$key >> ~/.bashrc
 fi
 if [ -z "$PORT"]; then 
-echo 'export PORT=9999' >> ~/.bashrc
+echo 'export PORT=443' >> ~/.bashrc
 fi
