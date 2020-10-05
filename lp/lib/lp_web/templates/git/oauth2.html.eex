@@ -1,3 +1,4 @@
 <H1> Autorisation succeded </H1>
-Your key is: <%= @code %>!
-todo. keep context
+<h2>Welcome,  <%= @login %> ! </h2>
+<h3>Is it your mail <%= @email %>? </h3>
+<p>todo. keep context </p>
