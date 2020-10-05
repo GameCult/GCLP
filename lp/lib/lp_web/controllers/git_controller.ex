@@ -12,7 +12,8 @@ defmodule LpWeb.GitController do
     end
     def oauth(conn, %{"code" => code}) do
       #some persistance side effect
-      # persist(code)        access_token = Github.Oauth2.Client.access_token!(
+      # persist(code)
+      access_token = Github.Oauth2.Client.access_token!(
           config: [client_id: @client_id, client_secret: @client_secret],
           params: [code: code]
         )
