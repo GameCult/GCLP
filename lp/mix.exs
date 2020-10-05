@@ -50,6 +50,7 @@ defmodule Lp.MixProject do
       {:phoenix_markdown, "~> 1.0"},
       # {:ueberauth_github, "~> 0.7"},
       {:github, "~> 0.12.0-rc1"},
+      {:poison, "~> 4.0.1"},
     ]
   end
 
