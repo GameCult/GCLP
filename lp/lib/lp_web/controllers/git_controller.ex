@@ -25,9 +25,6 @@ defmodule LpWeb.GitController do
       # redirect(conn, "git.html")
       # html(conn,"")
 
-
-      end
-
     end
 
     # ___ example from github
