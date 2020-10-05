@@ -4,10 +4,10 @@ defmodule LpWeb.ErrorView do
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
   def render("404.html", _assigns) do
-    render("404.html", %{})
+    render("404_page.html", %{})
   end
   def render("500.html", _assigns) do
-    render("500.html", %{})
+    render("500_page.html", %{})
     # "Internal Server Error"
   end
 
