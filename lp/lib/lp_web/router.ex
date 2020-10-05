@@ -21,7 +21,7 @@ defmodule LpWeb.Router do
     get "/table", TableController, :index
     get "/git", GitController, :index
     get "/github", GitController, :github
-    get "/creds_show", GitController, :show
+    get "/oauth2", GitController, :oauth
     # get "old", OldController, :index
 
     # live "/", PageLive, :index
